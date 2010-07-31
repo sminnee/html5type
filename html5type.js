@@ -1,12 +1,15 @@
 $ = function(x) { return document.getElementById(x) };
 
 window.onload = function() { generate(); }
+window.onresize = function() { generate(); }
 $('regenerateBtn').onclick  = function() { generate(); }
 $('content').onchange = function() { generate(); }
 
 function generate() {
 	var lines = $('content').value.split("\n");
 	var i, y = 10;
+	
+	var desiredWidth = $('rendered').offsetWidth - 20;
 
 	$('rendered').innerHTML = "";
 	
@@ -18,7 +21,7 @@ function generate() {
 		$('rendered').appendChild(p);
 		
 		// Get the scaling factor
-		var scale = (380 / span.offsetWidth);
+		var scale = (desiredWidth / span.offsetWidth);
 		
 		span.style.MozTransformOrigin = span.style.webkitTransformOrigin = 'top left';
 		span.style.MozTransform = span.style.webkitTransform = 'scale(' + scale + ')';

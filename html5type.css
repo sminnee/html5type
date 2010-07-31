@@ -1,12 +1,13 @@
 #rendered {
 	float: left;
-	width: 500px;
+	width: 60%;
 }
 #right {
+	width: 30%;
 	float: right;
 }
 textarea {
-	width: 300px;
+	width: 100%;
 	height: 300px;
 }
 

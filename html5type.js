@@ -23,6 +23,7 @@ function generate() {
 		// Get the scaling factor
 		var scale = (desiredWidth / span.offsetWidth);
 		
+		span.style.display = 'block';
 		span.style.MozTransformOrigin = span.style.webkitTransformOrigin = 'top left';
 		span.style.MozTransform = span.style.webkitTransform = 'scale(' + scale + ')';
 

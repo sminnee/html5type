@@ -25,8 +25,16 @@ function generate() {
 
 		// Adjust the paragraph height in response ot the scaling
 		p.style.height = (span.offsetHeight * scale) + 'px';
-		p.style.marginTop = (-8 * scale + 10) + 'px';
-		p.style.marginBottom =  (-7 * scale + 10) + 'px';
+		
+		// Futura
+		// var topFudge = 8; var bottomFudge = 7;
+		// Helvetica
+		var topFudge = 2.8; var bottomFudge = 5.9;
+		var spacing = 10;
+		
+		p.style.marginTop = (-topFudge * scale + spacing) + 'px';
+		p.style.marginBottom =  (-bottomFudge * scale + spacing) + 'px';
+
 	}
 	
 	

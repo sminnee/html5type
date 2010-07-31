@@ -49,7 +49,7 @@ function generate() {
 
 function loadText() {
 	var vars = getUrlVars();
-	if(text in vars) {
+	if(typeof vars.text == 'string') {
 		$('content').value = vars.text;
 	}
 
@@ -65,7 +65,7 @@ function getUrlVars() {
 	for(var i = 0; i < hashes.length; i++) {
 		hash = hashes[i].split('=');
 //		vars.push(hash[0]);
-		vars[unescape(hash[0])] = decodeURI(hash[1]);
+		vars[unescape(hash[0])] = decodeURIComponent(hash[1]);
 	}
 
 	return vars;
@@ -77,7 +77,7 @@ function save() {
 	else url = window.location.href.slice(0, window.location.href.indexOf('?'));
 	console.log(url);
 	
-	url += '?text=' + encodeURI($('content').value);
+	url += '?text=' + encodeURIComponent($('content').value);
 	
 	$('link').href = url;
 	$('linkText').innerHTML = url;

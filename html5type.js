@@ -1,9 +1,13 @@
 $ = function(x) { return document.getElementById(x) };
 
-window.onload = function() { generate(); }
+window.onload = function() { 
+	loadText();
+	generate(); 
+}
 window.onresize = function() { generate(); }
-$('regenerateBtn').onclick  = function() { generate(); }
 $('content').onchange = function() { generate(); }
+$('saveBtn').onclick  = function() { save(); }
+
 
 function generate() {
 	var lines = $('content').value.split("\n");
@@ -41,6 +45,41 @@ function generate() {
 		p.style.marginBottom =  (-bottomFudge * scale + spacing) + 'px';
 
 	}
+}
+
+function loadText() {
+	var vars = getUrlVars();
+	if(text in vars) {
+		$('content').value = vars.text;
+	}
+
+}
+
+function getUrlVars() {
+	var vars = {}, hash;
 	
+	if(window.location.href.indexOf('?') == -1) return vars;
 	
+	var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+	console.log(hashes);
+	for(var i = 0; i < hashes.length; i++) {
+		hash = hashes[i].split('=');
+//		vars.push(hash[0]);
+		vars[unescape(hash[0])] = decodeURI(hash[1]);
+	}
+
+	return vars;
+}
+
+function save() {
+	var url;
+	if(window.location.href.indexOf('?') == -1) url = window.location.href;
+	else url = window.location.href.slice(0, window.location.href.indexOf('?'));
+	console.log(url);
+	
+	url += '?text=' + encodeURI($('content').value);
+	
+	$('link').href = url;
+	$('linkText').innerHTML = url;
+	$('saveResults').style.display = 'block';
 }

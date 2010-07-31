@@ -12,9 +12,13 @@ textarea {
 }
 
 #rendered p {
-	margin: -3px 0;
+	margin: 10px 0;
 	padding: 0;
+	/*border: 1px red solid;*/
 	font-family: Helvetica, Futura;
 	font-size: 20px;
 	font-weight: bold;
+	white-space: nowrap;
+}
+#rendered p span {
 }

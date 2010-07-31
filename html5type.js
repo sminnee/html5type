@@ -1,5 +1,7 @@
 $ = function(x) { return document.getElementById(x) };
 
+if(typeof console == 'undefined') console = { log: function() {} };
+
 window.onload = function() { 
 	loadText();
 	generate(); 
@@ -24,25 +26,20 @@ function generate() {
 		p.appendChild(span);
 		$('rendered').appendChild(p);
 		
-		// Get the scaling factor
+		// Two-pass scaling method
+		span.style.fontSize = '20px';
 		var scale = (desiredWidth / span.offsetWidth);
+		span.style.fontSize = (scale * parseFloat(span.style.fontSize)) + 'px';
+		scale = (desiredWidth / span.offsetWidth);
+		span.style.fontSize = (scale * parseFloat(span.style.fontSize)) + 'px';
 		
-		span.style.width = (span.offsetWidth+5) + 'px';
-		span.style.display = 'block';
-		span.style.MozTransformOrigin = span.style.webkitTransformOrigin = 'top left';
-		span.style.MozTransform = span.style.webkitTransform = 'scale(' + scale + ')';
+		// Helvetica (font-size fudge)
+		var topFudge = -0.2; var bottomFudge = -0.23;
 
-		// Adjust the paragraph height in response ot the scaling
-		p.style.height = (span.offsetHeight * scale) + 'px';
-		
-		// Futura
-		// var topFudge = 8; var bottomFudge = 7;
-		// Helvetica
-		var topFudge = 2.8; var bottomFudge = 5.9;
-		var spacing = 10;
-		
-		p.style.marginTop = (-topFudge * scale + spacing) + 'px';
-		p.style.marginBottom =  (-bottomFudge * scale + spacing) + 'px';
+		// Apply fudge (it needs to be block for this to work)
+		span.style.display = 'block';
+		span.style.marginTop = (topFudge * parseFloat(span.style.fontSize)) + 'px';
+		span.style.marginBottom = (bottomFudge * parseFloat(span.style.fontSize)) + 'px';
 
 	}
 }

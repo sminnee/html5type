@@ -34,7 +34,13 @@ function generate() {
 		span.style.fontSize = (scale * parseFloat(span.style.fontSize)) + 'px';
 		
 		// Helvetica (font-size fudge)
-		var topFudge = -0.2; var bottomFudge = -0.23;
+		// Yay browser-specific settings :-/
+		if(navigator.userAgent.indexOf('WebKit') != -1) {
+			var topFudge = -0.2; var bottomFudge = -0.23;
+		} else {
+			var topFudge = -0.06; var bottomFudge = -0.23;
+		}
+		
 
 		// Apply fudge (it needs to be block for this to work)
 		span.style.display = 'block';

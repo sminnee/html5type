@@ -31,6 +31,7 @@ by time</textarea>
                 <p>You can copy the 
                 <a id="currentPageLink" href="#">current page's link</a> and
                 send it to your friends.</p>
+                <p>You might want to <a class="bookmarklet_link" href="javascript:var%20d=document,w=window,enc=encodeURIComponent,e=w.getSelection,k=d.getSelection,x=d.selection,s=(e?e():(k)?k():(x?x.createRange().text:0)),s2=((s.toString()=='')?s:('%22'+enc(s)+'%22')),f='http://bit.ly/',l=d.location,p='?v=3&u='+enc(l.href)%20+'&s='+enc(d.title)+'%20'+s2,u=f+p;try{if(!/^(.*\.)?tumblrzzz[^.]*$/.test(l.host))throw(0);tstbklt();}catch(z){a%20=function(){if(!w.open(u))l.href=u;};if(/Firefox/.test(navigator.userAgent))setTimeout(a,0);else%20a();}void(0)">shorten it with bit.ly</a></p>
                 
                 <pre id="savedText"></pre>
             </div>

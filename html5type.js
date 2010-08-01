@@ -76,10 +76,8 @@ function getUrlVars() {
 	if(window.location.href.indexOf('?') == -1) return vars;
 	
 	var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
-	console.log(hashes);
 	for(var i = 0; i < hashes.length; i++) {
 		hash = hashes[i].split('=');
-//		vars.push(hash[0]);
 		vars[unescape(hash[0])] = decodeURIComponent(hash[1]);
 	}
 
@@ -90,7 +88,6 @@ function save() {
 	var url;
 	if(window.location.href.indexOf('?') == -1) url = window.location.href;
 	else url = window.location.href.slice(0, window.location.href.indexOf('?'));
-	console.log(url);
 	
 	url += '?text=' + encodeURIComponent($('content').value);
 	

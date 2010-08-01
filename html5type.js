@@ -17,7 +17,9 @@ function renderFromContent() {
 
 function render(content) {
 	// Default boxtweaks
-	var font = window.getComputedStyle($('rendered'), null).fontFamily;
+	var font = $('font').value;
+	$('rendered').style.fontFamily = font;
+	
 	var boxTweaks = boundingBoxTweaks[font];
 	
 	var lines = content.split("\n");
@@ -144,6 +146,12 @@ TweakMaker = {
 			TweakMaker.loadVars()
 			TweakMaker.update()
 		}
+
+		$('font').onchange = function() {
+			TweakMaker.loadVars()
+			TweakMaker.update()
+		}
+
 	},
 	
 	update: function() {
@@ -162,7 +170,7 @@ TweakMaker = {
 	},
 	
 	loadVars: function() {
-		var font = window.getComputedStyle($('rendered'), null).fontFamily;
+		var font = $('font').value;
 		var boxTweaks = boundingBoxTweaks[font];
 		
 		if(boxTweaks == null) boxTweaks = boundingBoxTweaks[font] = {}
@@ -266,6 +274,7 @@ case 'index':
 	$('content').onchange = function() { renderFromContent(); }
 	$('content').onkeyup = function() { renderFromContent(); }
 	$('saveBtn').onclick  = function() { save(); }
+	$('font').onchange = function() { renderFromContent(); }
 	break;
 
 case 'tweak-maker':

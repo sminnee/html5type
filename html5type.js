@@ -37,8 +37,8 @@ function render(content) {
 		p.appendChild(span);
 		$('rendered').appendChild(p);
 		
-		var firstChar = lines[i].charAt(0).toLowerCase();
-		var lastChar = lines[i].charAt(lines[i].length-1).toLowerCase();
+		var firstChar = text.charAt(0).toLowerCase();
+		var lastChar = text.charAt(text.length-1).toLowerCase();
 		
 		var topFudge = boxTweaks.top;
 		var bottomFudge = boxTweaks.bottom;

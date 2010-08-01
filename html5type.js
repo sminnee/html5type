@@ -43,9 +43,9 @@ function render(content) {
 		var topFudge = boxTweaks.top;
 		var bottomFudge = boxTweaks.bottom;
 		var leftFudge = boxTweaks.left[firstChar];
-		if(leftFudge == null) leftFudge = boxTweaks.left.default;
+		if(leftFudge == null) leftFudge = boxTweaks.left['default'];
 		var rightFudge = boxTweaks.right[lastChar];
-		if(rightFudge == null) rightFudge = boxTweaks.right.default;
+		if(rightFudge == null) rightFudge = boxTweaks.right['default'];
 
 		// Two-pass scaling method
 		span.style.fontSize = '100px';
@@ -170,8 +170,8 @@ TweakMaker = {
 		if(boxTweaks.bottom == null) boxTweaks.bottom = boundingBoxTweaks[font].bottom = 0;
 		if(boxTweaks.left == null) boxTweaks.left = boundingBoxTweaks[font].left = {};
 		if(boxTweaks.right == null) boxTweaks.right = boundingBoxTweaks[font].right = {};
-		if(boxTweaks.left.default == null) boxTweaks.left.default = boundingBoxTweaks[font].left.default = [0,0];
-		if(boxTweaks.right.default == null) boxTweaks.right.default = boundingBoxTweaks[font].right.default = [0,0];
+		if(boxTweaks.left['default'] == null) boxTweaks.left['default'] = boundingBoxTweaks[font].left['default'] = [0,0];
+		if(boxTweaks.right['default'] == null) boxTweaks.right['default'] = boundingBoxTweaks[font].right['default'] = [0,0];
 		
 		$('top').value = boxTweaks.top;
 		$('bottom').value = boxTweaks.bottom;
@@ -179,12 +179,12 @@ TweakMaker = {
 			var character = $('character').value;
 			if(!boxTweaks.left[character]) {
 				boundingBoxTweaks[font].left[character] = boxTweaks.left[character] = 
-					[boxTweaks.left.default[0], boxTweaks.left.default[1]];
+					[boxTweaks.left['default'][0], boxTweaks.left['default'][1]];
 			}
 			if(!boxTweaks.right[character]) {
-				boxTweaks.right[character] = boxTweaks.right.default;
+				boxTweaks.right[character] = boxTweaks.right['default'];
 				boundingBoxTweaks[font].right[character] = boxTweaks.right[character] = 
-					[boxTweaks.right.default[0], boxTweaks.right.default[1]];
+					[boxTweaks.right['default'][0], boxTweaks.right['default'][1]];
 			}
 			if(typeof boxTweaks.left[character] == 'number') {
 				$('left0').value = boxTweaks.left[character];

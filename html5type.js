@@ -166,6 +166,14 @@ TweakMaker = {
 		var font = window.getComputedStyle($('rendered'), null).fontFamily;
 		var boxTweaks = boundingBoxTweaks[font];
 		
+		if(boxTweaks == null) boxTweaks = boundingBoxTweaks[font] = {}
+		if(boxTweaks.top == null) boxTweaks.top = boundingBoxTweaks[font].top = 0;
+		if(boxTweaks.bottom == null) boxTweaks.bottom = boundingBoxTweaks[font].bottom = 0;
+		if(boxTweaks.left == null) boxTweaks.left = boundingBoxTweaks[font].left = {};
+		if(boxTweaks.right == null) boxTweaks.right = boundingBoxTweaks[font].right = {};
+		if(boxTweaks.left.default == null) boxTweaks.left.default = boundingBoxTweaks[font].left.default = [0,0];
+		if(boxTweaks.right.default == null) boxTweaks.right.default = boundingBoxTweaks[font].right.default = [0,0];
+		
 		$('top').value = boxTweaks.top;
 		$('bottom').value = boxTweaks.bottom;
 		if($('character').value) {

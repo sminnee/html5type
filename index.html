@@ -22,11 +22,18 @@ youth
 not generation,
 a problem cured
 by time</textarea>
-            <p><input id="saveBtn" value="save (make a link to this text)" type="submit"></p>
-            <p id="saveResults" style="display: none">
-                Your text can be viewed <a id="link" href="#">here</a>.<br><br>
-                The link is:<br> <span id="linkText">#</span>
+
+            <p id="saveButtonHolder">
+                <input id="saveBtn" value="save (make a link to this text)" type="submit">
             </p>
+            <div id="saveResults" style="display: none">
+                <p>Your text has been saved.</p>
+                <p>You can copy the 
+                <a id="currentPageLink" href="#">current page's link</a> and
+                send it to your friends.</p>
+                
+                <pre id="savedText"></pre>
+            </div>
         </div>
 
 

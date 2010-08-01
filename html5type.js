@@ -1,5 +1,8 @@
 $ = function(x) { return document.getElementById(x) };
 
+// Global, used by other functions
+getVars = getUrlVars();
+
 if(typeof console == 'undefined') console = { log: function() {} };
 
 window.onload = function() { 
@@ -12,6 +15,14 @@ $('saveBtn').onclick  = function() { save(); }
 
 
 function generate() {
+	if(getVars.text == $('content').value) {
+		$('saveResults').style.display = 'block';
+		$('saveButtonHolder').style.display = 'none';
+	} else {
+		$('saveResults').style.display = 'none';
+		$('saveButtonHolder').style.display = 'block';
+	}
+	
 	var lines = $('content').value.split("\n");
 	var i, y = 10;
 	
@@ -51,9 +62,10 @@ function generate() {
 }
 
 function loadText() {
-	var vars = getUrlVars();
-	if(typeof vars.text == 'string') {
-		$('content').value = vars.text;
+	if(typeof getVars.text == 'string') {
+		$('content').value = getVars.text;
+		$('saveResults').style.display = 'block';
+		$('currentPageLink').href = window.location.href;
 	}
 
 }
@@ -82,7 +94,5 @@ function save() {
 	
 	url += '?text=' + encodeURIComponent($('content').value);
 	
-	$('link').href = url;
-	$('linkText').innerHTML = url;
-	$('saveResults').style.display = 'block';
+	window.location.href = url;
 }

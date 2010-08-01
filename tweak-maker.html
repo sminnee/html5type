@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>HTML5 Typography Experiments - Tweak Maker</title>
+        
+        <link rel="stylesheet" href="html5type.css">
+    </head>
+    
+    <body id="tweak-maker">
+        <div id="rendered" class="debug"></div>
+        
+        <div id="right">
+            <p><label><input id="topBottomRadio" type="radio" checked="checked" name="panelSelector"> Top/Bottom</label></p>
+            <div id="topBottom">
+                <p>Top: <input size="5" id="top">
+                <p>Bottom: <input size="5" id="bottom">
+            </div>
+
+            <p><label><input id="leftRightRadio" type="radio" name="panelSelector"> Left/Right</label></p>
+            <div id="leftRight" style="display: none">
+                <p>Character: <input type="text" id="character"></p>
+                <p>Left: <input size="5" type="text" id="left0"> variable, <input size="5" type="text" id="left1"> fixed</p>
+                <p>Right: <input size="5" type="text" id="right0"> variable, <input size="5" type="text" id="right1"> fixed</p>
+            </div>
+            
+            <p>Updated tweak data (copy and paste into code):</p>
+            <p id="tweakOutput"></pre>
+        </div>
+
+
+        <script src="html5type.js"></script>
+        <script src="tweakdata.js"></script>
+    </body>
+
+</html>

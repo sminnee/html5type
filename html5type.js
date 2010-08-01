@@ -23,9 +23,8 @@ function render(content) {
 	var lines = content.split("\n");
 	var i, y = 10;
 	
-	var desiredWidth = $('rendered').offsetWidth - 20;
-
 	$('rendered').innerHTML = "";
+	var desiredWidth = $('rendered').offsetWidth - 20;
 	
 	for(i=0;i<lines.length;i++) {
 		var p = document.createElement('p');

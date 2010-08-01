@@ -35,7 +35,7 @@ function render(content) {
 		var text = lines[i].replace(/([ \t]+$)|(^[ \t]+)/g,'').toUpperCase();
 		if(!text) continue;
 		
-		span.innerText = text;
+		span.innerHTML = text.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
 		p.appendChild(span);
 		$('rendered').appendChild(p);
 		
@@ -221,7 +221,7 @@ TweakMaker = {
 			boundingBoxTweaks[font][RegExp.$1][character][RegExp.$2] = parseFloat($(varName).value);
 		}
 		
-		$('tweakOutput').innerText = JSON.stringify(boundingBoxTweaks);
+		$('tweakOutput').innerHTML = JSON.stringify(boundingBoxTweaks).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
 		
 		TweakMaker.update();
 	},

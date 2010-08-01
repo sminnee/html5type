@@ -264,6 +264,7 @@ case 'index':
 	}
 	window.onresize = function() { renderFromContent(); }
 	$('content').onchange = function() { renderFromContent(); }
+	$('content').onkeyup = function() { renderFromContent(); }
 	$('saveBtn').onclick  = function() { save(); }
 	break;
 
